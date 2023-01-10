@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import './style.css';
+import {MathpixMarkdownModel as MM} from "mathpix-markdown-it";
+import ConvertForm from "./Form";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+    componentDidMount() {
+        const isLoad = MM.loadMathJax();
+        if (isLoad) {
+            console.log('STYLE is loading')
+        } else {
+            console.log('STYLE is NOT loading')
+        }
+    }
+    render() {
+        return (
+            <div className="App">
+                <ConvertForm />
+            </div>
+        )
+    }
 }
 
 export default App;
